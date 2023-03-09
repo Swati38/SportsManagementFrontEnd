@@ -1,0 +1,26 @@
+.your-component-class {
+  background: url('./images/bg2.jpg') no-repeat  fixed ;
+ opacity: 0.8;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 1000px;
+}
+
+.content{
+  font-size: 21px;
+  font-weight: 600;
+}
+.login-background {
+  background: url('./images/login.jpg') no-repeat  fixed ;
+ opacity: 0.8;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 1300px;
+}
+.field{
+  font-size: 20px;
+  font-weight: 600;
+}
+/* rgba(0, 0, 0, 0.5) center center  */
