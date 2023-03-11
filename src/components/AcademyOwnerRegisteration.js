@@ -1,11 +1,12 @@
 import Button from 'react-bootstrap/Button';
-//import {registerPlayer} from "../services/player-service";
+import {registerAcademyOwner} from "../services/Academy-helper";
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 function AcademyOwnerRegisteration()
-{
+{  const navigate= useNavigate();
     const[owner,setOwner]=useState({
         ownerName:"",
         mobileNo:"",
@@ -16,15 +17,27 @@ function AcademyOwnerRegisteration()
         regDate:"",
         gender:""
     });
-   
+ 
   
     const handle = (e) => {
         const newowner={...owner};
         newowner[e.target.id]=e.target.value;
         setOwner(newowner);
-        console.log(owner);
+        // console.log(owner);
     
     }
+    function submit(e){
+      e.preventDefault();
+     console.log(owner);
+     registerAcademyOwner(owner).then((res)=>{
+          //console.log(res);
+         //  alert("Player Registered Successfully");
+          navigate('/academyRegister');
+         
+      }).catch(err=>{
+          console.log(err);
+      })
+  }
    
    
     return(
@@ -37,8 +50,8 @@ function AcademyOwnerRegisteration()
             </div>
             <div className='col-md-4' style={{color:"black", height:"800px",width:"800px",backgroundColor:"white", borderRadius:"20px", marginTop:"100px",
         opacity:"0.8" }}>
-            <Form >
-        {/* onSubmit={(e)=>{submit(e)}} */}
+            <Form  onSubmit={(e)=>{submit(e)}}>
+        {/*  */}
 
     {/* <Form.Group className="mb-3" >
         <Form.Label>Player Id</Form.Label>
@@ -51,7 +64,7 @@ function AcademyOwnerRegisteration()
 
     <Form.Group className="mb-3">
         <Form.Label className='field'>Name</Form.Label>
-        <Form.Control type="text" placeholder="Name" value={owner.ownerName} id="name" onChange={(e)=>handle(e)} />
+        <Form.Control type="text" placeholder="Name" value={owner.ownerName} id="ownerName" onChange={(e)=>handle(e)} />
       </Form.Group>
 
 
@@ -83,7 +96,7 @@ function AcademyOwnerRegisteration()
       
       <Form.Group className="mb-3" >
         <Form.Label className='field'>Registeration Date</Form.Label>
-        <Form.Control type="date" placeholder="regDate" value={owner.regDate} id="aadharNo" onChange={(e)=>handle(e)} />
+        <Form.Control type="date" placeholder="regDate" value={owner.regDate} id="regDate" onChange={(e)=>handle(e)} />
       </Form.Group>
 
       

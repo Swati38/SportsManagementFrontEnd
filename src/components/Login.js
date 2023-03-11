@@ -43,8 +43,7 @@ const Login = () => {
   <Button variant='success' onClick={handleButtonClick}>Register</Button>
 )}
 {isButtonClicked && (
-  <div>
-   
+  <div>   
    <NavLink to="/player"><Button variant="success" style={{marginRight:"50px"}}>As Player</Button> </NavLink>
    <NavLink to="/owner"> <Button variant="success">As Academy</Button></NavLink>
   </div>

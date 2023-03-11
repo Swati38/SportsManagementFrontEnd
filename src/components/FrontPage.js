@@ -3,8 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import BackgroundSlider from './BackgroundSlider'
-
-const AppHeader = () => {
+import Footer from './Footer'
+import Review from './Review'
+const FrontPage = () => {
   return (
     <div>
       
@@ -18,16 +19,21 @@ const AppHeader = () => {
           </Nav>
           <Nav style={{fontSize:"25px"}}>
             <Nav.Link href="Booking">Book</Nav.Link>
-            <Nav.Link href="aboutUs">About Us</Nav.Link>
+            <Nav.Link href="contact">Contact Us</Nav.Link>
             <Nav.Link href="login">Login/Registeration</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-   
-
+    <div> 
+    <BackgroundSlider/>
+    </div>
+ 
+<div>
+    <Footer/>
+</div>
     </div>
   )
 }
 
-export default AppHeader
+export default FrontPage

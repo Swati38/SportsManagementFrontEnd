@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import {registerPlayer} from "../services/Player-helper";
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 function PlayerRegisteration()
@@ -14,27 +16,28 @@ function PlayerRegisteration()
         aadharNo:"",
         gender:"",
     });
-   
+   const navigate=useNavigate();
   
     const handle = (e) => {
         const newplayer={...player};
         newplayer[e.target.id]=e.target.value;
         setPlayer(newplayer);
-        console.log(player);
+       // console.log(player);
     
     }
    
-    // function submit(e){
-    //     e.preventDefault();
-    //    console.log(player);
-    //    / registerPlayer(player).then((res)=>{
-    //         console.log(res);
-    //         alert("Player Registered Successfully");
+    function submit(e){
+        e.preventDefault();
+       console.log(player);
+        registerPlayer(player).then((res)=>{
+            //console.log(res);
+           //  alert("Player Registered Successfully");
+            navigate('/academy');
            
-    //     }).catch(err=>{
-    //         console.log(err);
-    //     })
-    // }
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
     return(
         <div className='login-background'>
         <div className="container login-background">
@@ -48,7 +51,8 @@ function PlayerRegisteration()
             <br/>
             <h2>Player Registeration</h2>
             <hr/>
-                <Form>
+                <Form  onSubmit={(e)=>{submit(e)}}>
+    
     {/* onSubmit={(e)=>{submit(e)}} */}
     {/* <Form.Group className="mb-3" >
         <Form.Label>Player Id</Form.Label>
@@ -90,11 +94,11 @@ function PlayerRegisteration()
       </Form.Group>
 
 
-
+      {/* <NavLink to="/academy"></NavLink> */}
   
-    <NavLink to="/academy"><Button variant="warning" type="submit" style={{fontSize:"24px", fontWeight:500}}> 
+    <Button variant="warning" type="submit" style={{fontSize:"24px", fontWeight:500}}> 
         Register
-      </Button> </NavLink>
+      </Button> 
     </Form>
    
 
